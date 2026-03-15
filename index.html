@@ -32,6 +32,10 @@
   .logo span { color: #fff; }
   .subtitle { margin-top: 6px; font-size: 13px; color: var(--muted); letter-spacing: 1px; }
   .update-badge { display: inline-block; margin-top: 12px; padding: 4px 12px; background: rgba(200,168,255,0.1); border: 1px solid rgba(200,168,255,0.25); border-radius: 20px; font-size: 12px; color: var(--accent); }
+  .nav { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+  .nav a { padding: 6px 16px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); text-decoration: none; font-size: 13px; transition: all 0.2s; }
+  .nav a:hover { border-color: var(--accent2); color: var(--text); }
+  .nav a.active { background: rgba(200,168,255,0.12); border-color: var(--accent); color: var(--accent); }
   .controls { position: relative; z-index: 1; display: flex; gap: 8px; padding: 20px 24px; justify-content: center; flex-wrap: wrap; }
   .tab-btn { padding: 8px 20px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 500; transition: all 0.2s; }
   .tab-btn:hover { border-color: var(--accent2); color: var(--text); }
@@ -86,6 +90,10 @@
   <div class="logo"><span>NIKKE</span> 티어표</div>
   <div class="subtitle">승리의 여신 니케 · 캐릭터 등급표</div>
   <div class="update-badge">✦ 2026년 3월 기준 (벨벳 버전)</div>
+  <div class="nav">
+    <a href="index.html" class="active">티어표</a>
+    <a href="party.html">파티 추천</a>
+  </div>
 </header>
 <div class="controls">
   <button class="tab-btn active" onclick="setMode('pve',event)">PvE</button>
