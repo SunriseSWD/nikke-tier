@@ -24,368 +24,80 @@
     --burst2: #a9e34b;
     --burst3: #74c0fc;
   }
-
   * { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
-
-  /* 배경 효과 */
-  body::before {
-    content: '';
-    position: fixed;
-    top: -200px; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 400px;
-    background: radial-gradient(ellipse, rgba(123,94,167,0.15) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* 헤더 */
-  header {
-    position: relative;
-    z-index: 1;
-    padding: 40px 24px 32px;
-    text-align: center;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .logo {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--accent);
-    text-transform: uppercase;
-  }
-
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Sans KR', sans-serif; font-size: 14px; line-height: 1.6; min-height: 100vh; }
+  body::before { content: ''; position: fixed; top: -200px; left: 50%; transform: translateX(-50%); width: 800px; height: 400px; background: radial-gradient(ellipse, rgba(123,94,167,0.15) 0%, transparent 70%); pointer-events: none; z-index: 0; }
+  header { position: relative; z-index: 1; padding: 40px 24px 32px; text-align: center; border-bottom: 1px solid var(--border); }
+  .logo { font-family: 'Rajdhani', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; }
   .logo span { color: #fff; }
-
-  .subtitle {
-    margin-top: 6px;
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 1px;
-  }
-
-  .update-badge {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 4px 12px;
-    background: rgba(200,168,255,0.1);
-    border: 1px solid rgba(200,168,255,0.25);
-    border-radius: 20px;
-    font-size: 12px;
-    color: var(--accent);
-  }
-
-  /* 컨트롤 */
-  .controls {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    gap: 8px;
-    padding: 20px 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .tab-btn {
-    padding: 8px 20px;
-    border-radius: 8px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--muted);
-    cursor: pointer;
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    transition: all 0.2s;
-  }
-
+  .subtitle { margin-top: 6px; font-size: 13px; color: var(--muted); letter-spacing: 1px; }
+  .update-badge { display: inline-block; margin-top: 12px; padding: 4px 12px; background: rgba(200,168,255,0.1); border: 1px solid rgba(200,168,255,0.25); border-radius: 20px; font-size: 12px; color: var(--accent); }
+  .controls { position: relative; z-index: 1; display: flex; gap: 8px; padding: 20px 24px; justify-content: center; flex-wrap: wrap; }
+  .tab-btn { padding: 8px 20px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; font-family: 'Noto Sans KR', sans-serif; font-size: 13px; font-weight: 500; transition: all 0.2s; }
   .tab-btn:hover { border-color: var(--accent2); color: var(--text); }
-
-  .tab-btn.active {
-    background: rgba(200,168,255,0.12);
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* 검색 */
-  .search-wrap {
-    position: relative;
-    z-index: 1;
-    padding: 0 24px 20px;
-    max-width: 480px;
-    margin: 0 auto;
-  }
-
-  .search-wrap input {
-    width: 100%;
-    padding: 10px 16px 10px 40px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--surface);
-    color: var(--text);
-    font-family: 'Noto Sans KR', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-
+  .tab-btn.active { background: rgba(200,168,255,0.12); border-color: var(--accent); color: var(--accent); }
+  .search-wrap { position: relative; z-index: 1; padding: 0 24px 20px; max-width: 480px; margin: 0 auto; }
+  .search-wrap input { width: 100%; padding: 10px 16px 10px 40px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-family: 'Noto Sans KR', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s; }
   .search-wrap input:focus { border-color: var(--accent2); }
-
   .search-wrap input::placeholder { color: var(--muted); }
-
-  .search-icon {
-    position: absolute;
-    left: 40px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 16px;
-    pointer-events: none;
-  }
-
-  /* 메인 */
-  main {
-    position: relative;
-    z-index: 1;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 16px 80px;
-  }
-
-  /* 티어 섹션 */
-  .tier-section {
-    margin-bottom: 12px;
-    border-radius: 14px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  .tier-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 20px;
-    background: var(--surface);
-    cursor: pointer;
-    user-select: none;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .tier-badge {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    min-width: 36px;
-  }
-
+  .search-icon { position: absolute; left: 40px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; pointer-events: none; }
+  main { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 16px 80px; }
+  .tier-section { margin-bottom: 12px; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); }
+  .tier-header { display: flex; align-items: center; gap: 16px; padding: 14px 20px; background: var(--surface); border-bottom: 1px solid var(--border); }
+  .tier-badge { font-family: 'Rajdhani', sans-serif; font-size: 22px; font-weight: 700; min-width: 36px; }
   .tier-0 .tier-badge { color: var(--tier0); }
   .tier-1 .tier-badge { color: var(--tier1); }
   .tier-2 .tier-badge { color: var(--tier2); }
   .tier-3 .tier-badge { color: var(--tier3); }
-
-  .tier-label {
-    font-size: 14px;
-    color: var(--muted);
-    flex: 1;
-  }
-
-  .tier-count {
-    font-size: 12px;
-    color: var(--muted);
-    background: var(--surface2);
-    padding: 2px 10px;
-    border-radius: 12px;
-  }
-
-  .tier-body {
-    background: var(--surface);
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1px;
-    background: var(--border);
-  }
-
-  /* 캐릭터 카드 */
-  .char-card {
-    background: var(--surface);
-    padding: 16px 14px;
-    cursor: pointer;
-    transition: background 0.15s;
-    position: relative;
-  }
-
+  .tier-label { font-size: 14px; color: var(--muted); flex: 1; }
+  .tier-count { font-size: 12px; color: var(--muted); background: var(--surface2); padding: 2px 10px; border-radius: 12px; }
+  .tier-body { background: var(--border); display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1px; }
+  .char-card { background: var(--surface); padding: 16px 14px; cursor: pointer; transition: background 0.15s; }
   .char-card:hover { background: var(--surface2); }
-
   .char-card.hidden { display: none; }
-
-  .char-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .char-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-
-  .tag {
-    font-size: 11px;
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-
+  .char-name { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .char-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
   .tag-burst1 { background: rgba(255,135,135,0.15); color: var(--burst1); }
   .tag-burst2 { background: rgba(169,227,75,0.15); color: var(--burst2); }
   .tag-burst3 { background: rgba(116,192,252,0.15); color: var(--burst3); }
   .tag-attacker { background: rgba(255,107,107,0.12); color: #ff8787; }
   .tag-supporter { background: rgba(200,168,255,0.12); color: var(--accent); }
   .tag-defender { background: rgba(116,192,252,0.12); color: #74c0fc; }
-
-  /* 모달 */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.75);
-    backdrop-filter: blur(4px);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-  }
-
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); backdrop-filter: blur(4px); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
   .modal-overlay.open { opacity: 1; pointer-events: all; }
-
-  .modal {
-    background: var(--surface);
-    border: 1px solid rgba(200,168,255,0.2);
-    border-radius: 20px;
-    padding: 32px;
-    max-width: 480px;
-    width: 100%;
-    transform: scale(0.95);
-    transition: transform 0.2s;
-    position: relative;
-  }
-
+  .modal { background: var(--surface); border: 1px solid rgba(200,168,255,0.2); border-radius: 20px; padding: 32px; max-width: 480px; width: 100%; transform: scale(0.95); transition: transform 0.2s; position: relative; }
   .modal-overlay.open .modal { transform: scale(1); }
-
-  .modal-close {
-    position: absolute;
-    top: 16px; right: 16px;
-    background: var(--surface2);
-    border: none;
-    color: var(--muted);
-    width: 32px; height: 32px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    display: flex; align-items: center; justify-content: center;
-    transition: color 0.2s;
-  }
-
+  .modal-close { position: absolute; top: 16px; right: 16px; background: var(--surface2); border: none; color: var(--muted); width: 32px; height: 32px; border-radius: 8px; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: color 0.2s; }
   .modal-close:hover { color: var(--text); }
-
-  .modal-name {
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 4px;
-  }
-
-  .modal-tier {
-    font-size: 13px;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .modal-section {
-    margin-bottom: 16px;
-  }
-
-  .modal-section-title {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--muted);
-    margin-bottom: 8px;
-  }
-
-  .modal-desc {
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.7;
-    padding: 12px 16px;
-    background: var(--surface2);
-    border-radius: 10px;
-    border-left: 3px solid var(--accent2);
-  }
-
-  .modal-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-
-  /* 빈 상태 */
-  .empty {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-  }
-
+  .modal-name { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+  .modal-tier { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+  .modal-section { margin-bottom: 16px; }
+  .modal-section-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 8px; }
+  .modal-desc { font-size: 13px; color: var(--text); line-height: 1.7; padding: 12px 16px; background: var(--surface2); border-radius: 10px; border-left: 3px solid var(--accent2); }
+  .modal-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .empty { text-align: center; padding: 60px 20px; color: var(--muted); }
   .empty-icon { font-size: 40px; margin-bottom: 12px; }
-
-  /* 반응형 */
-  @media (max-width: 600px) {
-    .logo { font-size: 26px; }
-    .tier-body { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
-  }
+  @media (max-width: 600px) { .logo { font-size: 26px; } .tier-body { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); } }
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo"><span>NIKKE</span> 티어표</div>
   <div class="subtitle">승리의 여신 니케 · 캐릭터 등급표</div>
-  <div class="update-badge">✦ 2026년 3월 기준</div>
+  <div class="update-badge">✦ 2026년 3월 기준 (벨벳 버전)</div>
 </header>
-
 <div class="controls">
-  <button class="tab-btn active" onclick="setMode('pve')">PvE</button>
-  <button class="tab-btn" onclick="setMode('pvp')">PvP</button>
+  <button class="tab-btn active" onclick="setMode('pve',event)">PvE</button>
+  <button class="tab-btn" onclick="setMode('pvp',event)">PvP</button>
 </div>
-
 <div class="search-wrap">
   <span class="search-icon">🔍</span>
   <input type="text" placeholder="니케 이름으로 검색..." oninput="search(this.value)" id="searchInput">
 </div>
-
 <main id="tierList"></main>
-
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" id="modal">
+  <div class="modal">
     <button class="modal-close" onclick="closeModalDirect()">✕</button>
     <div class="modal-name" id="modalName"></div>
     <div class="modal-tier" id="modalTier"></div>
@@ -399,193 +111,153 @@
     </div>
   </div>
 </div>
-
 <script>
 const data = {
   pve: [
-    {
-      tier: "0",
-      label: "혼자서 2인분 이상. 메타 필수",
-      chars: [
-        { name: "라피 : 레드후드", burst: 3, role: "attacker", desc: "최상위 단일 딜러. 풀버스트에서 압도적인 화력. 스토리 어디서든 활약." },
-        { name: "모더니아", burst: 3, role: "attacker", desc: "지속 딜이 매우 강력. 자동 사격 시스템으로 안정적인 화력 유지." },
-        { name: "홍련", burst: 3, role: "attacker", desc: "광역 딜 최강. 보스전과 다수 적 처리 모두 최적." },
-        { name: "엘리사", burst: 2, role: "supporter", desc: "버프+힐 동시 제공. 2버스트 중 가장 범용성 높음." },
-        { name: "라프", burst: 3, role: "attacker", desc: "레이드 최상위. 지속딜과 폭딜을 동시에 갖춘 만능 어태커." },
-      ]
-    },
-    {
-      tier: "1",
-      label: "각 역할 필수급. 안정적으로 채용 가능",
-      chars: [
-        { name: "앨리스", burst: 3, role: "attacker", desc: "차지 샷 특화. 부위 파괴 및 단일 보스 특효." },
-        { name: "도로시", burst: 3, role: "supporter", desc: "강력한 공격 버프 제공. 파티 화력을 크게 끌어올림." },
-        { name: "노엘", burst: 1, role: "defender", desc: "최고의 탱커. 파티 생존율을 크게 높여줌." },
-        { name: "리타 : 찰리", burst: 2, role: "supporter", desc: "ATK 버프 + 빠른 버스트 게이지 충전. 범용성 최상." },
-        { name: "수아", burst: 2, role: "supporter", desc: "버스트 게이지 충전 최강. 풀버스트 사이클 단축." },
-        { name: "볼륨", burst: 1, role: "attacker", desc: "1버스트 중 압도적 딜량. 공격적 1버 운용 시 최선택." },
-      ]
-    },
-    {
-      tier: "2",
-      label: "조합에 따라 유용. 1티어 하위 호환",
-      chars: [
-        { name: "야에 비스켓", burst: 3, role: "attacker", desc: "스킬 시너지가 특정 조합에서 강력. 범용성은 다소 부족." },
-        { name: "막스웰", burst: 3, role: "attacker", desc: "차지샷 딜러. 스펙이 받쳐줄 때 강력하나 운용이 까다로움." },
-        { name: "에코", burst: 2, role: "supporter", desc: "디버프 특화. 보스 딜 증폭용으로 유용." },
-        { name: "포커스", burst: 2, role: "defender", desc: "실드 + 회복. 안정적이나 엘리사보다 활용도 낮음." },
-        { name: "피에타", burst: 1, role: "defender", desc: "튼튼한 탱커. 특정 보스전에서 빛을 발함." },
-      ]
-    },
-    {
-      tier: "3",
-      label: "스킬 시너지 부족. 채용 우선순위 낮음",
-      chars: [
-        { name: "지크", burst: 1, role: "attacker", desc: "성능이 낮아 다른 1버스트로 대체 권장." },
-        { name: "아이리스", burst: 2, role: "supporter", desc: "버프량이 적어 2티어 서포터 대비 부족." },
-        { name: "민들레", burst: 2, role: "supporter", desc: "힐 역할이나 엘리사, 포커스에 비해 효율이 낮음." },
-        { name: "배서", burst: 3, role: "attacker", desc: "딜량 자체는 나쁘지 않으나 스킬 구성이 비효율." },
-      ]
-    }
+    { tier:"0", label:"현 메타 최강. 무조건 육성 우선", chars:[
+      {name:"라피 : 레드 후드",burst:3,role:"attacker",desc:"2026년 현재 유일신급. 솔로 레이드, 스토리, 보스전 전부 압도적. 최우선 육성 권장."},
+      {name:"크라운",burst:2,role:"supporter",desc:"신데렐라와의 시너지로 현 메타 핵심. 강력한 버프와 보호막 제공."},
+      {name:"나유타",burst:3,role:"attacker",desc:"레이드 최상위 딜러. 스킬 시너지가 압도적이며 투자 가치 최고."},
+      {name:"리틀 머메이드",burst:1,role:"supporter",desc:"현 메타 버스트1 유일신. CDR + 강력한 공격 버프로 팀 화력 극대화."},
+      {name:"마스트 : 로망틱 메이드",burst:3,role:"attacker",desc:"강력한 지속딜과 자가버프. 다양한 콘텐츠에서 범용성 높음."},
+      {name:"스노우 화이트",burst:3,role:"attacker",desc:"필그림 특유의 압도적 스펙. 스토리와 보스전 모두 넘사벽 화력."},
+      {name:"헬름",burst:2,role:"supporter",desc:"힐 + 방어 버프 겸용. 안정적인 파티 운영에 필수."},
+      {name:"신데렐라",burst:2,role:"supporter",desc:"크라운과 조합 시 현 메타 최강 버퍼. 공격력 버프가 압도적."},
+      {name:"리버렐리오",burst:3,role:"attacker",desc:"고화력 딜러. 레이드 상위권 팀에서 자주 채용."},
+    ]},
+    { tier:"1", label:"강력한 준메타. 안정적으로 활용 가능", chars:[
+      {name:"리타",burst:1,role:"supporter",desc:"버스트1 중 범용성 최상. CDR과 버프를 동시에 제공."},
+      {name:"루주",burst:1,role:"supporter",desc:"강력한 공격 버프. 리틀머메이드 없을 때 최선택."},
+      {name:"토브",burst:1,role:"supporter",desc:"힐 + CDR 겸용. 안정적인 파티 구성에 유용."},
+      {name:"미란다",burst:1,role:"supporter",desc:"버스트1 서포터. 특정 조합에서 높은 효율."},
+      {name:"앵커 : 이노센트 메이드",burst:2,role:"supporter",desc:"강력한 버프 제공. 크라운/신데렐라의 대체재."},
+      {name:"그레이브",burst:3,role:"attacker",desc:"안정적인 고화력 딜러. 다양한 콘텐츠 범용성."},
+      {name:"도로시 : 세렌디피티",burst:3,role:"supporter",desc:"강력한 공격 버프형 서포터. 파티 화력 증폭."},
+      {name:"홍련 : 흑영",burst:3,role:"attacker",desc:"홍련의 강화판. 광역 딜 여전히 강력."},
+      {name:"레이븐",burst:3,role:"attacker",desc:"안정적인 딜러. 솔로레이드에서 유용."},
+      {name:"드레이크",burst:3,role:"attacker",desc:"지속딜 특화. 장기전 콘텐츠에 유리."},
+      {name:"벨벳",burst:1,role:"supporter",desc:"최신 추가 캐릭터. 강력한 버프로 T1 안착."},
+      {name:"에이드 : 에이전트 바니",burst:2,role:"supporter",desc:"버프 + 보호막. 범용성 있는 버스트2 서포터."},
+    ]},
+    { tier:"2", label:"상황에 따라 유용. 보유 시 활용 가능", chars:[
+      {name:"볼륨",burst:1,role:"attacker",desc:"버스트1 중 딜 최강. T1 서포터 없을 때 유용."},
+      {name:"앨리스",burst:3,role:"attacker",desc:"차지샷 딜러. 과거 최강자였으나 현재는 T2."},
+      {name:"모더니아",burst:3,role:"attacker",desc:"자동사격 딜러. 과거 메타 캐릭터, 현재는 대체 가능."},
+      {name:"레드 후드",burst:3,role:"attacker",desc:"라피 레드후드의 하위호환이나 여전히 준수한 딜량."},
+      {name:"아인",burst:2,role:"defender",desc:"튼튼한 탱커. 고난이도 콘텐츠 생존력 기여."},
+      {name:"이브",burst:1,role:"supporter",desc:"힐 특화 버스트1. 생존이 힘든 구간에서 유용."},
+      {name:"브리드 : 사일런트 트랙",burst:3,role:"attacker",desc:"스토리 진행에 유용한 딜러."},
+      {name:"일레그 : 붐 앤 쇼크",burst:3,role:"attacker",desc:"광역 딜 특화. 다수 적 처리에 강점."},
+      {name:"브래디",burst:3,role:"attacker",desc:"안정적인 딜러. 특정 보스전에서 유용."},
+      {name:"길로틴 : 윈터 슬레이어",burst:3,role:"attacker",desc:"강화 스킨 버전. 일반 길로틴보다 크게 향상."},
+      {name:"D: 킬러 와이프",burst:1,role:"supporter",desc:"버프형 버스트1. 특정 조합에서 활용."},
+      {name:"헬름 : 아쿠아마린",burst:2,role:"supporter",desc:"헬름 코스튬 버전. 성능은 원본과 유사."},
+    ]},
+    { tier:"3", label:"현 메타에서 활용도 낮음. 수집용", chars:[
+      {name:"도로시",burst:3,role:"supporter",desc:"도로시:세렌디피티의 하위호환. 대체재 있으면 교체 권장."},
+      {name:"홍련",burst:3,role:"attacker",desc:"흑영 버전에 밀려 활용도 하락. 과거 메타 캐릭터."},
+      {name:"앨리스 : 원더랜드 바니",burst:1,role:"supporter",desc:"코스튬 버전. 성능은 T3 수준."},
+      {name:"엑시아",burst:2,role:"attacker",desc:"딜+버프 겸용이나 효율이 낮음."},
+      {name:"누아르",burst:3,role:"attacker",desc:"스킬 시너지 부족. 다른 딜러로 대체 권장."},
+      {name:"바이퍼",burst:3,role:"attacker",desc:"딜량 부족. 현 메타에서 채용 우선순위 낮음."},
+      {name:"라플라스",burst:3,role:"attacker",desc:"특정 상황 외 범용성 부족."},
+      {name:"팬텀",burst:3,role:"attacker",desc:"스킬 계수 낮음. 현 메타에서 비효율."},
+      {name:"프리바티",burst:3,role:"attacker",desc:"캐릭터성은 인기 있으나 성능은 T3 수준."},
+    ]}
   ],
   pvp: [
-    {
-      tier: "0",
-      label: "PvP 특화 최강. 반드시 대비해야 함",
-      chars: [
-        { name: "홍련", burst: 3, role: "attacker", desc: "광역 즉사급 딜. PvP에서 가장 두려운 니케." },
-        { name: "노엘", burst: 1, role: "defender", desc: "높은 방어력으로 파티를 오래 버티게 함." },
-        { name: "앨리스", burst: 3, role: "attacker", desc: "빠른 싱글 타깃 제거. PvP에서도 최강 딜러." },
-      ]
-    },
-    {
-      tier: "1",
-      label: "PvP 핵심 파티원",
-      chars: [
-        { name: "라피 : 레드후드", burst: 3, role: "attacker", desc: "높은 스펙으로 PvP에서도 최전선." },
-        { name: "볼륨", burst: 1, role: "attacker", desc: "1버스트 중 PvP 딜 1위." },
-        { name: "수아", burst: 2, role: "supporter", desc: "버스트 사이클 가속으로 선빵 풀버스트 유리." },
-        { name: "도로시", burst: 3, role: "supporter", desc: "공격 버프로 아군 화력 크게 증폭." },
-      ]
-    },
-    {
-      tier: "2",
-      label: "상황에 따라 채용 가능",
-      chars: [
-        { name: "막스웰", burst: 3, role: "attacker", desc: "차지샷으로 단일 타깃 빠른 처리." },
-        { name: "리타 : 찰리", burst: 2, role: "supporter", desc: "버프+게이지 충전 겸용." },
-        { name: "에코", burst: 2, role: "supporter", desc: "디버프로 상대 딜 감소." },
-      ]
-    },
-    {
-      tier: "3",
-      label: "PvP에서는 활용도 낮음",
-      chars: [
-        { name: "민들레", burst: 2, role: "supporter", desc: "PvP에서 힐 효율이 낮음." },
-        { name: "아이리스", burst: 2, role: "supporter", desc: "PvP 버프량 부족." },
-        { name: "야에 비스켓", burst: 3, role: "attacker", desc: "PvP 환경에서 시너지 발동이 어려움." },
-      ]
-    }
+    { tier:"0", label:"PvP 필수. 없으면 상위권 진입 불가", chars:[
+      {name:"스노우 화이트",burst:3,role:"attacker",desc:"PvP 압도적 1위. 상위 아레나 필수 캐릭터. 반드시 보유해야 함."},
+      {name:"라피 : 레드 후드",burst:3,role:"attacker",desc:"PvE와 마찬가지로 PvP에서도 최강. 빠른 단일 타깃 제거."},
+      {name:"크라운",burst:2,role:"supporter",desc:"신데렐라와 조합 시 PvP 화력 극대화. 필수 버퍼."},
+      {name:"신데렐라",burst:2,role:"supporter",desc:"PvP 최강 버퍼. 크라운과 함께 채용 필수."},
+    ]},
+    { tier:"1", label:"PvP 핵심 파티원", chars:[
+      {name:"리틀 머메이드",burst:1,role:"supporter",desc:"빠른 버스트 사이클로 선빵 풀버스트 유리."},
+      {name:"나유타",burst:3,role:"attacker",desc:"PvP에서도 강력한 화력. 상위권 팀에서 자주 등장."},
+      {name:"볼륨",burst:1,role:"attacker",desc:"버스트1 중 PvP 딜 최상위."},
+      {name:"앵커 : 이노센트 메이드",burst:2,role:"supporter",desc:"크라운 없을 때 대체 버퍼."},
+      {name:"헬름",burst:2,role:"supporter",desc:"힐+방어로 PvP 생존력 크게 향상."},
+      {name:"루주",burst:1,role:"supporter",desc:"CDR + 버프로 빠른 버스트 사이클."},
+    ]},
+    { tier:"2", label:"상황에 따라 채용 가능", chars:[
+      {name:"레드 후드",burst:3,role:"attacker",desc:"준수한 PvP 딜량. 라피 없을 때 대체."},
+      {name:"앨리스",burst:3,role:"attacker",desc:"단일 타깃 빠른 처리. 여전히 쓸만함."},
+      {name:"그레이브",burst:3,role:"attacker",desc:"안정적인 딜러로 PvP에서도 활용 가능."},
+      {name:"에이드 : 에이전트 바니",burst:2,role:"supporter",desc:"버프+보호막으로 팀 안정성 기여."},
+      {name:"아인",burst:2,role:"defender",desc:"PvP 생존력 특화. 오래 버티는 파티 구성에 유리."},
+    ]},
+    { tier:"3", label:"PvP에서는 활용도 낮음", chars:[
+      {name:"모더니아",burst:3,role:"attacker",desc:"PvP 환경에서 자동사격 딜이 비효율."},
+      {name:"홍련",burst:3,role:"attacker",desc:"과거 PvP 강자였으나 현재 T3로 하락."},
+      {name:"도로시",burst:3,role:"supporter",desc:"PvP 버프 효율 낮음."},
+      {name:"프리바티",burst:3,role:"attacker",desc:"PvP 환경에서 스킬 발동 어려움."},
+    ]}
   ]
 };
 
-let currentMode = 'pve';
-let searchQuery = '';
+let currentMode='pve', searchQuery='';
 
-function setMode(mode) {
-  currentMode = mode;
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  document.getElementById('searchInput').value = '';
-  searchQuery = '';
+function setMode(mode,e){
+  currentMode=mode;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  e.target.classList.add('active');
+  document.getElementById('searchInput').value='';
+  searchQuery='';
   render();
 }
 
-function search(val) {
-  searchQuery = val.trim().toLowerCase();
-  render();
-}
+function search(val){ searchQuery=val.trim().toLowerCase(); render(); }
 
-function tierLabel(t) {
-  const map = { '0': '0티어', '1': '1티어', '2': '2티어', '3': '3티어' };
-  return map[t] || t + '티어';
-}
+function roleTag(r){ return ({attacker:['tag-attacker','어태커'],supporter:['tag-supporter','서포터'],defender:['tag-defender','디펜더']})[r]||['',r]; }
+function burstTag(b){ return ({1:['tag-burst1','B1'],2:['tag-burst2','B2'],3:['tag-burst3','B3']})[b]||['','B?']; }
 
-function roleTag(role) {
-  const map = { attacker: ['tag-attacker', '어태커'], supporter: ['tag-supporter', '서포터'], defender: ['tag-defender', '디펜더'] };
-  return map[role] || ['', role];
-}
-
-function burstTag(burst) {
-  const map = { 1: ['tag-burst1', 'B1'], 2: ['tag-burst2', 'B2'], 3: ['tag-burst3', 'B3'] };
-  return map[burst] || ['', 'B?'];
-}
-
-function openModal(name, tier, char) {
-  const [roleCls, roleLabel] = roleTag(char.role);
-  const [burstCls, burstLabel] = burstTag(char.burst);
-  document.getElementById('modalName').textContent = name;
-  document.getElementById('modalTier').textContent = tierLabel(tier) + ' · ' + (currentMode === 'pve' ? 'PvE' : 'PvP');
-  document.getElementById('modalDesc').textContent = char.desc;
-  document.getElementById('modalTags').innerHTML =
-    `<span class="tag ${burstCls}">버스트 ${char.burst}</span><span class="tag ${roleCls}">${roleLabel}</span>`;
+function openModal(idx, tier){
+  const tiers=data[currentMode];
+  const tierObj=tiers.find(t=>t.tier===tier);
+  const char=tierObj.chars[idx];
+  const [rc,rl]=roleTag(char.role);
+  const [bc,bl]=burstTag(char.burst);
+  document.getElementById('modalName').textContent=char.name;
+  document.getElementById('modalTier').textContent=tier+'티어 · '+(currentMode==='pve'?'PvE':'PvP');
+  document.getElementById('modalDesc').textContent=char.desc;
+  document.getElementById('modalTags').innerHTML=`<span class="tag ${bc}">버스트 ${char.burst}</span><span class="tag ${rc}">${rl}</span>`;
   document.getElementById('modalOverlay').classList.add('open');
 }
 
-function closeModal(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
-}
+function closeModal(e){ if(e.target===document.getElementById('modalOverlay')) closeModalDirect(); }
+function closeModalDirect(){ document.getElementById('modalOverlay').classList.remove('open'); }
 
-function closeModalDirect() {
-  document.getElementById('modalOverlay').classList.remove('open');
-}
-
-function render() {
-  const list = document.getElementById('tierList');
-  const tiers = data[currentMode];
-  let anyVisible = false;
-
-  list.innerHTML = tiers.map(tier => {
-    const filtered = searchQuery
-      ? tier.chars.filter(c => c.name.toLowerCase().includes(searchQuery))
-      : tier.chars;
-
-    if (filtered.length === 0 && searchQuery) return '';
-    anyVisible = true;
-
-    const cards = tier.chars.map(char => {
-      const hidden = searchQuery && !char.name.toLowerCase().includes(searchQuery);
-      const [roleCls, roleLabel] = roleTag(char.role);
-      const [burstCls, burstLabel] = burstTag(char.burst);
-      return `
-        <div class="char-card tier-${tier.tier} ${hidden ? 'hidden' : ''}" onclick="openModal('${char.name}', '${tier.tier}', ${JSON.stringify(char).replace(/'/g, "\\'")})">
-          <div class="char-name">${char.name}</div>
-          <div class="char-tags">
-            <span class="tag ${burstCls}">${burstLabel}</span>
-            <span class="tag ${roleCls}">${roleLabel}</span>
-          </div>
-        </div>`;
-    }).join('');
-
-    return `
-      <div class="tier-section tier-${tier.tier}">
-        <div class="tier-header">
-          <span class="tier-badge">${tier.tier}T</span>
-          <span class="tier-label">${tier.label}</span>
-          <span class="tier-count">${tier.chars.length}명</span>
-        </div>
-        <div class="tier-body">${cards}</div>
+function render(){
+  const list=document.getElementById('tierList');
+  const tiers=data[currentMode];
+  let any=false;
+  list.innerHTML=tiers.map(tier=>{
+    const visible=searchQuery?tier.chars.filter(c=>c.name.toLowerCase().includes(searchQuery)):tier.chars;
+    if(!visible.length&&searchQuery) return '';
+    any=true;
+    const cards=tier.chars.map((char,i)=>{
+      const hidden=searchQuery&&!char.name.toLowerCase().includes(searchQuery);
+      const [rc,rl]=roleTag(char.role);
+      const [bc,bl]=burstTag(char.burst);
+      return `<div class="char-card tier-${tier.tier}${hidden?' hidden':''}" onclick="openModal(${i},'${tier.tier}')">
+        <div class="char-name">${char.name}</div>
+        <div class="char-tags"><span class="tag ${bc}">${bl}</span><span class="tag ${rc}">${rl}</span></div>
       </div>`;
+    }).join('');
+    return `<div class="tier-section tier-${tier.tier}">
+      <div class="tier-header">
+        <span class="tier-badge">${tier.tier}T</span>
+        <span class="tier-label">${tier.label}</span>
+        <span class="tier-count">${tier.chars.length}명</span>
+      </div>
+      <div class="tier-body">${cards}</div>
+    </div>`;
   }).join('');
-
-  if (!anyVisible) {
-    list.innerHTML = `<div class="empty"><div class="empty-icon">🔍</div><div>'${searchQuery}'에 해당하는 니케가 없어요</div></div>`;
-  }
+  if(!any) list.innerHTML=`<div class="empty"><div class="empty-icon">🔍</div><div>'${searchQuery}'에 해당하는 니케가 없어요</div></div>`;
 }
 
-// 키보드 ESC로 모달 닫기
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModalDirect(); });
-
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModalDirect();});
 render();
 </script>
 </body>
