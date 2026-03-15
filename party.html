@@ -369,11 +369,12 @@ function recommend() {
   }
 
   const preset = presets[currentPurpose];
-  const selectedArr = [...selected];
 
-  // 각 슬롯에서 보유 캐릭터 중 최적 선택
+  // 각 슬롯에서 보유 캐릭터 중 최적 선택 (중복 방지)
+  const usedChars = new Set();
   const party = preset.priority.map(slot => {
-    const match = slot.candidates.find(c => selected.has(c));
+    const match = slot.candidates.find(c => selected.has(c) && !usedChars.has(c));
+    if (match) usedChars.add(match);
     return { name: match || null, burst: slot.burst, fallback: slot.candidates[0] };
   });
 
